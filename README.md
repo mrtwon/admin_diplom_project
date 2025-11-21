@@ -46,6 +46,9 @@
   </li>
   <li>
     После поднятия машин откройте файл ansible/inventory.yaml и внести локальные и публичные IP адреса машин
+    <ul>
+      <li>nano ansible/inventory.yaml</li>
+    </ul>
   </li>
   <li>
     После конфигурации inventory.yaml откройте файл ansible/playbook_set.sh и последовательно запсукайте скрипт.
