@@ -1,0 +1,14 @@
+
+- name: Установка Postgresql Master Server
+  hosts: postgresql-master
+  roles:
+    - role: install_postgresql
+  tags:
+   - install_master
+
+- name: Установка Postgresql Replica Server
+  hosts: postgresql-replica
+  roles:
+    - role: install_postgresql
+  tags:
+   - install_replica

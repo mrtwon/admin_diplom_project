@@ -1,0 +1,4 @@
+- name: Настройка Zabbix-Agent
+  hosts: nginx-mediawiki,postgresql
+  roles:
+    - role: config_zabbix_agent

@@ -1,0 +1,6 @@
+postgresql_settings:
+  db_name: "my_wiki"
+  db_user: "wikiuser"
+  db_pass: "qwerty"
+  db_repl_user: "syncuser"
+  db_repl_pass: "qwerty"

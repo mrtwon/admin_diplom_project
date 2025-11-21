@@ -1,0 +1,19 @@
+upstream app_servers {
+  least_conn;
+  server {{ hostvars['nginx-server-1']['ansible_local'] }}:80 weight=1;
+  server {{ hostvars['nginx-server-2']['ansible_local'] }}:80 weight=1;
+}
+
+server {
+
+listen 80;
+
+server_name example.com;
+
+location / {
+
+proxy_pass http://app_servers;
+
+}
+
+}

@@ -1,0 +1,10 @@
+- name: Конфигурация nginx balancer
+  ansible.builtin.template:
+    src: default.j2
+    dest: /etc/nginx/sites-enabled/default
+
+- name: Перезапуск Nginx Balancer
+  service:
+    name: nginx
+    state: restarted
+  become: yes

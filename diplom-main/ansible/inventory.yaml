@@ -1,0 +1,110 @@
+---
+linux:  # Группа хостов
+  children:  # Обозначение, что будет подгруппа хостов 
+   # alls_hosts:
+   #   hosts:
+   #     nginx-balancer:
+   #       ansible_host: "{{ nginx_balancer_ip.public }}"
+   #       ansible_local: "{{ nginx_balancer_ip.local }}"
+   #     nginx-server-1:
+   #       ansible_host: "{{ nginx_server_1_ip.public }}"
+   #       ansible_local: "{{ nginx_server_1_ip.local }}"
+   #     nginx-server-2:
+   #       ansible_host: "{{ nginx_server_2_ip.public }}"
+   #       ansible_local: "{{ nginx_server_1_ip.local }}"
+   #     backup_server_1:
+   #       ansible_host: "{{ backup_server_ip.public }}"
+   #       ansible_local: "{{ backup_server_ip.local }}"
+   #     postgresql_master:
+   #       ansible_host: "{{ postgresql_master_ip.public }}"
+   #       ansible_local: "{{ postgresql_master_ip.local }}"
+   #     postgresql_replica:
+   #       ansible_host: "{{ postgresql_replica.public }}"
+   #       ansible_local: "{{ postgresql_replica.local }}"
+    nginx-balancer:
+      hosts:
+        nginx-balancer:
+          ansible_host: "{{ nginx_balancer_ip.public }}"
+          ansible_local: "{{ nginx_balancer_ip.local }}"
+    nginx-server:
+      hosts:
+        nginx-balancer:
+          ansible_host: "{{ nginx_balancer_ip.public }}"
+          ansible_local: "{{ nginx_balancer_ip.local }}"
+        nginx-server-1:
+          ansible_host: "{{ nginx_server_1_ip.public }}"
+          ansible_local: "{{ nginx_server_1_ip.local }}"
+        nginx-server-2:
+          ansible_host: "{{ nginx_server_2_ip.public }}"
+          ansible_local: "{{ nginx_server_2_ip.local }}"
+    nginx-mediawiki:
+      hosts:
+        nginx-server-1:
+          ansible_host: "{{ nginx_server_1_ip.public }}"
+          ansible_local: "{{ nginx_server_1_ip.local }}"
+        nginx-server-2:
+          ansible_host: "{{ nginx_server_2_ip.public }}"
+          ansible_local: "{{ nginx_server_2_ip.local }}"
+    nginx-server-1:
+      hosts:
+        nginx-server-1:
+          ansible_host: "{{ nginx_server_1_ip.public }}"
+          ansible_local: "{{ nginx_server_1_ip.local }}"
+    nginx-server-2:
+      hosts:
+        nginx-server-2:
+          ansible_host: "{{ nginx_server_2_ip.public }}"
+          ansible_local: "{{ nginx_server_2_ip.local }}"
+    postgresql:
+      hosts:
+        postgresql-master:
+          ansible_host: "{{ postgresql_master_ip.public }}"
+          ansible_local: "{{ postgresql_master_ip.local }}"
+        postgresql-replica:
+          ansible_host: "{{ postgresql_replica_ip.public }}"
+          ansible_local: "{{ postgresql_replica_ip.local }}"
+    postgresql-master:
+      hosts:
+        postgresql-master:
+          ansible_host: "{{ postgresql_master_ip.public }}"
+          ansible_local: "{{ postgresql_master_ip.local }}"
+    postgresql-replica:
+      hosts:
+        postgresql-replica:
+          ansible_host: "{{ postgresql_replica_ip.public }}"
+          ansible_local: "{{ postgresql_replica_ip.local }}"
+          #ansible_local: "0.0.0.1"
+    backup-server:
+      hosts:
+        backup-server:
+          ansible_host: "{{ backup_server_ip.public }}"
+          ansible_local: "{{ backup_server_ip.local }}"
+          ansible_backup_user: "{{ backup_server_ip.backup_user }}"
+          ansible_backup_password: "{{ backup_server_ip.backup_password }}"
+
+  vars:  # Переменные, доступные или используемые для всех подгрупп
+    ansible_user: "ubuntu"
+    #ansible_password: "qwerty"
+    connection_protocol: ssh  # тип подключения
+    ansible_become: true  # Становиться ли другим пользователем после подключения
+    ansible_become_user: root
+    nginx_balancer_ip:
+      public: 130.193.48.25
+      local: 192.168.10.16
+    nginx_server_1_ip:
+      public: 51.250.3.192
+      local: 192.168.10.14
+    nginx_server_2_ip:
+      public: 89.169.159.71
+      local: 192.168.10.9
+    postgresql_master_ip:
+      public: 89.169.147.216
+      local: 192.168.10.30
+    backup_server_ip:
+      public: 51.250.79.153
+      local: 192.168.10.13
+      backup_user: "backup_user"
+      backup_password: "qwerty"
+    postgresql_replica_ip:
+      public: 46.21.244.32
+      local: 192.168.10.24

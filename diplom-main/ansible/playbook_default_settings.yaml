@@ -1,0 +1,41 @@
+- name: Базовая настройка для Nginx Server 1
+  hosts: nginx-server-1
+  roles:
+    - role: default_settings
+  tags:
+   - base_settings
+
+- name: Базовая настройка для Nginx Server 2
+  hosts: nginx-server-2
+  roles:
+    - role: default_settings
+  tags:
+   - base_settings
+
+- name: Базовая настройка для Nginx Balancer
+  hosts: nginx-balancer
+  roles:
+    - role: default_settings
+  tags:
+   - base_settings
+
+- name: Базовая настройка для PostgresqlMaster
+  hosts: postgresql-master
+  roles:
+    - role: default_settings
+  tags:
+   - base_settings
+
+- name: Базовая настройка для PostgresqlReplica
+  hosts: postgresql-replica
+  roles:
+    - role: default_settings
+  tags:
+   - base_settings
+
+- name: Базовая настройка для Backup Server
+  hosts: backup-server
+  roles:
+    - role: default_settings
+  tags:
+   - base_settings
