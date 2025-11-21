@@ -17,3 +17,21 @@
 </li>
 </ul>
 </p>
+<h3>Структура</h3>
+<ul>
+  <li>
+    ansible
+    <ul>
+      <li>playbook_set.sh - поэтапный запуск каждого playbook'a Ansible</li>
+      <li>playbook_up_replica_to_master.yaml - playbook аварийной смены главного БД сервера на реплику и изменния конфига в MediaWiki</li>
+    </ul>
+  </li>
+  <li>
+    terraform
+    <ul>
+      <li>
+        install_terraform_yc.sh - sh скрипт для автоматической установки и настройки Terrraform в связке с Yandex Cloud
+      </li>
+    </ul>
+  </li>
+</ul>
