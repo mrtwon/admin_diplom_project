@@ -35,3 +35,21 @@
     </ul>
   </li>
 </ul>
+<h3>Поэтапный запуск</h3>
+<ul>
+  <li>
+    Для начала нужно поднять виртуальные машины для этого запустите terraform/install_terraform_yc.sh
+    <ul>
+      <li>chmod 777 terraform/install_terraform_yc.sh</li>
+      <li>./terraform/install_terraform_yc.sh</li>
+    </ul>
+  </li>
+  <li>
+    После поднятия машин откройте файл ansible/inventory.yaml и внести локальные и публичные IP адреса машин
+  </li>
+  <li>
+    После конфигурации inventory.yaml откройте файл ansible/playbook_set.sh и последовательно запсукайте скрипт
+    На этапе установки MediaWiki прежде чем двигатся дальше настройте ее через web интерфейс
+    После успешной установки у вас будет возможность скачать LocalSettings.php, файл перемещать никуда не нужно, дальше выполняйте команды в скрипте playbook_set.sh
+  </li>
+</ul>
